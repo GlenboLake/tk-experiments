@@ -1,13 +1,24 @@
 import tkinter as tk
 
-window = tk.Tk()
 
-tk.Label(text='Would you rather...').pack()
+class WouldYouRather(tk.Frame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.pack()
 
-a = tk.Button(text='...fight 100 duck-sized horses?')
-a.pack(side='left')
-tk.Label(text='or').pack(side='left')
-b = tk.Button(text='...fight 1 horse-sized duck?')
-b.pack(side='left')
+        tk.Label(text='Would you rather...').pack()
 
-window.mainloop()
+        self.remarks = tk.StringVar()
+        self.response = tk.Label(textvariable=self.remarks)
+        self.response.pack(side='bottom')
+
+        self.a = tk.Button(text='...fight 100 duck-sized horses?')
+        self.a.pack(side='left')
+        tk.Label(text='or').pack(side='left')
+        self.b = tk.Button(text='...fight 1 horse-sized duck?')
+        self.b.pack(side='left')
+
+
+root = tk.Tk()
+app = WouldYouRather(root)
+app.mainloop()
